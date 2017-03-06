@@ -7,6 +7,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+const randomIntegerBetween = (from, to) => Math.floor(Math.random() * to) + from;
+const getRandomImage = () => 
+  `https://unsplash.it/30${randomIntegerBetween(0, 9)}/25${randomIntegerBetween(0, 9)}`;
+
+const hotGirls = [
+  {name: 'Sonja', age: 27, image: getRandomImage()},
+  {name: 'Tarja', age: 34, image: getRandomImage()},
+  {name: 'Enni', age: 216, image: getRandomImage()},
+];
+
 class tinderCards extends Component {
   render() {
     return (
