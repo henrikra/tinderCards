@@ -15,6 +15,7 @@ class Card extends Component {
     onPanResponderMove: Animated.event([null, {dx: this.state.position.x, dy: this.state.position.y}]),
     onPanResponderRelease: () => {
       this.state.position.flattenOffset();
+      Animated.spring(this.state.position, {toValue: {x: 0, y: 0}}).start();
     },
   })
 
