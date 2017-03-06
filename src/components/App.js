@@ -23,7 +23,7 @@ class tinderCards extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Card />        
+        {hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
         <View style={styles.buttons}>
           <View style={styles.button}>
             <TouchableOpacity style={styles.buttonPressable}>

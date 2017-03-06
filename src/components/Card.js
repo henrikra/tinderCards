@@ -3,9 +3,10 @@ import {Image, Text, StyleSheet} from 'react-native';
 
 class Card extends Component {
   render() {
+    const {name, age, image} = this.props;
     return (
-      <Image source={{uri: 'https://unsplash.it/300/250'}} style={styles.image}>
-        <Text style={styles.title}>Sonja, 27</Text>
+      <Image source={{uri: image}} style={styles.image}>
+        <Text style={styles.title}>{name}, {age}</Text>
       </Image>
     );
   }
