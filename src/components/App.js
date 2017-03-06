@@ -2,23 +2,28 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 
 class tinderCards extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Image source={{uri: 'https://unsplash.it/300/250'}} style={styles.image} />
+        <View style={styles.buttons}>
+          <View style={styles.button}>
+            <TouchableOpacity style={styles.buttonPressable}>
+              <Text>x</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.button}>
+            <TouchableOpacity style={styles.buttonPressable}>
+              <Text>{'<3'}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
@@ -27,19 +32,29 @@ class tinderCards extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 10,
+    backgroundColor: '#F5F6FA',
+  },
+  image: {
+    flex: 1,
+    borderRadius: 15,
+  },
+  buttons: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingVertical: 10,
+  },
+  button: {
+    backgroundColor: '#ffffff',
+    marginHorizontal: 10,
+    borderRadius: 25,
+  },
+  buttonPressable: {
+    width: 50,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+
   },
 });
 
