@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Text, StyleSheet, PanResponder, Animated} from 'react-native';
+import {Image, Text, StyleSheet, PanResponder, Animated, Dimensions} from 'react-native';
 
 class Card extends Component {
   state = {
@@ -26,7 +26,17 @@ class Card extends Component {
         source={{uri: image}} 
         style={[
           styles.image, 
-          {transform: this.state.position.getTranslateTransform()},
+          {
+            transform: [
+              ...this.state.position.getTranslateTransform(), 
+              {
+                rotate: this.state.position.x.interpolate({
+                  inputRange: [0, Dimensions.get('window').width],
+                  outputRange: ['0deg', '-10deg'],
+                }),
+              },
+            ],
+          },
         ]} 
         {...this.panResponder.panHandlers}
       >
