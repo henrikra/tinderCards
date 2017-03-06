@@ -13,9 +13,18 @@ class Card extends Component {
       this.state.position.setValue({x: 0, y: 0});
     },
     onPanResponderMove: Animated.event([null, {dx: this.state.position.x, dy: this.state.position.y}]),
-    onPanResponderRelease: () => {
+    onPanResponderRelease: (event, gestureState) => {
       this.state.position.flattenOffset();
-      Animated.spring(this.state.position, {toValue: {x: 0, y: 0}}).start();
+      if (Math.abs(gestureState.dx) > Dimensions.get('window').width / 2) {
+        const multiplier = gestureState.dx > 0 ? 2 : -2;
+        Animated.spring(this.state.position, {toValue: {
+          x: Dimensions.get('window').width * multiplier, 
+          y: this.state.position.y,
+        }}).start();
+      }
+      else {
+        Animated.spring(this.state.position, {toValue: {x: 0, y: 0}}).start();
+      }
     },
   })
 
