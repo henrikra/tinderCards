@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import Card from './Card';
+
 const randomIntegerBetween = (from, to) => Math.floor(Math.random() * to) + from;
 const getRandomImage = () => 
   `https://unsplash.it/30${randomIntegerBetween(0, 9)}/25${randomIntegerBetween(0, 9)}`;
@@ -21,9 +23,7 @@ class tinderCards extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={{uri: 'https://unsplash.it/300/250'}} style={styles.image}>
-          <Text style={styles.title}>Sonja, 27</Text>
-        </Image>
+        <Card />        
         <View style={styles.buttons}>
           <View style={styles.button}>
             <TouchableOpacity style={styles.buttonPressable}>
@@ -47,18 +47,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#F5F6FA',
     paddingTop: 20,
-  },
-  image: {
-    flex: 1,
-    borderRadius: 15,
-    justifyContent: 'flex-end',
-  },
-  title: {
-    color: '#ffffff',
-    backgroundColor: 'rgba(0, 0, 0, 0.25)',
-    padding: 15,
-    fontSize: 18,
-    fontWeight: '600',
   },
   buttons: {
     justifyContent: 'center',
