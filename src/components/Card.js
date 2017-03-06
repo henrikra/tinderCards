@@ -14,9 +14,13 @@ class Card extends Component {
 
 const styles = StyleSheet.create({
   image: {
-    flex: 1,
     borderRadius: 15,
     justifyContent: 'flex-end',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   title: {
     color: '#ffffff',

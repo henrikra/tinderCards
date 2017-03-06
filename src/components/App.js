@@ -12,18 +12,21 @@ import Card from './Card';
 const randomIntegerBetween = (from, to) => Math.floor(Math.random() * to) + from;
 const getRandomImage = () => 
   `https://unsplash.it/30${randomIntegerBetween(0, 9)}/25${randomIntegerBetween(0, 9)}`;
+const getLastTwo = arr => arr.slice(Math.max(arr.length - 2, 1));
 
 const hotGirls = [
   {name: 'Sonja', age: 27, image: getRandomImage()},
   {name: 'Tarja', age: 34, image: getRandomImage()},
-  {name: 'Enni', age: 216, image: getRandomImage()},
+  {name: 'Enni', age: 50, image: getRandomImage()},
 ];
 
 class tinderCards extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
+        <View style={styles.cards}>
+          {getLastTwo(hotGirls).map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
+        </View>
         <View style={styles.buttons}>
           <View style={styles.button}>
             <TouchableOpacity style={styles.buttonPressable}>
@@ -63,6 +66,9 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  cards: {
+    flex: 1,
   },
 });
 
