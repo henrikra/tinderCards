@@ -11,7 +11,9 @@ class tinderCards extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={{uri: 'https://unsplash.it/300/250'}} style={styles.image} />
+        <Image source={{uri: 'https://unsplash.it/300/250'}} style={styles.image}>
+          <Text style={styles.title}>Sonja, 27</Text>
+        </Image>
         <View style={styles.buttons}>
           <View style={styles.button}>
             <TouchableOpacity style={styles.buttonPressable}>
@@ -39,6 +41,14 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     borderRadius: 15,
+    justifyContent: 'flex-end',
+  },
+  title: {
+    color: '#ffffff',
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    padding: 15,
+    fontSize: 18,
+    fontWeight: '600',
   },
   buttons: {
     justifyContent: 'center',
@@ -55,7 +65,6 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-
   },
 });
 
