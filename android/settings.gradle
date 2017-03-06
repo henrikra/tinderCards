@@ -1,0 +1,3 @@
+rootProject.name = 'tinderCards'
+
+include ':app'
