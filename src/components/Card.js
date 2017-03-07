@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Image, Text, StyleSheet, PanResponder, Animated, Dimensions} from 'react-native';
+import {
+  Image, 
+  Text, 
+  StyleSheet, 
+  PanResponder, 
+  Animated, 
+  Dimensions, 
+  View,
+} from 'react-native';
 
 const animationDirection = {
   left: -1,
@@ -60,6 +68,10 @@ class Card extends Component {
         ]} 
         {...this.panResponder.panHandlers}
       >
+        <View style={styles.reactions}>
+          <Text style={[styles.reaction, styles.like]}>LIKE</Text>
+          <Text style={[styles.reaction, styles.nope]}>NOPE</Text>
+        </View>
         <Text style={styles.title}>{name}, {age}</Text>
       </Animated.Image>
     );
@@ -69,7 +81,7 @@ class Card extends Component {
 const styles = StyleSheet.create({
   image: {
     borderRadius: 15,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -84,6 +96,31 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
   },
+  reactions: {
+    flexDirection: 'row',
+    paddingTop: 20,
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+  },
+  reaction: {
+    fontSize: 32,
+    fontWeight: '600',
+    borderWidth: 3,
+    textAlign: 'center',
+    paddingHorizontal: 10,
+    paddingTop: 5,
+    borderRadius: 5,
+  },
+  like: {
+    color: '#37C978',
+    borderColor: '#37C978',
+    transform: [{rotate: '-10deg'}],
+  },
+  nope: {
+    color: '#FD4F69',
+    borderColor: '#FD4F69',
+    transform: [{rotate: '10deg'}],
+  }
 });
 
 export default Card;
