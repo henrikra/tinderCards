@@ -76,7 +76,7 @@ class Card extends Component {
               styles.like,
               {
                 opacity: this.state.position.x.interpolate({
-                  inputRange: [0, deviceWidth / 4],
+                  inputRange: [20, deviceWidth / 4],
                   outputRange: [0, 1],
                 })
               }
@@ -90,7 +90,7 @@ class Card extends Component {
               styles.nope,
               {
                 opacity: this.state.position.x.interpolate({
-                  inputRange: [-deviceWidth / 4, 0],
+                  inputRange: [-deviceWidth / 4, -20],
                   outputRange: [1, 0],
                 })
               }
