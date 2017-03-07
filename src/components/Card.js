@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+const {width: deviceWidth} = Dimensions.get('window');
 const animationDirection = {
   left: -1,
   right: 1,
@@ -37,7 +38,7 @@ class Card extends Component {
       if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
         const direction = gestureState.vx > 0 ? animationDirection.right : animationDirection.left;
         Animated.spring(this.state.position, {toValue: {
-          x: Dimensions.get('window').width * direction * 2, 
+          x: deviceWidth * direction * 2, 
           y: this.state.position.y,
         }}).start();
       }
@@ -59,7 +60,7 @@ class Card extends Component {
               ...this.state.position.getTranslateTransform(), 
               {
                 rotate: this.state.position.x.interpolate({
-                  inputRange: [0, Dimensions.get('window').width],
+                  inputRange: [0, deviceWidth],
                   outputRange: ['0deg', '-10deg'],
                 }),
               },
@@ -69,8 +70,34 @@ class Card extends Component {
         {...this.panResponder.panHandlers}
       >
         <View style={styles.reactions}>
-          <Text style={[styles.reaction, styles.like]}>LIKE</Text>
-          <Text style={[styles.reaction, styles.nope]}>NOPE</Text>
+          <Animated.Text 
+            style={[
+              styles.reaction, 
+              styles.like,
+              {
+                opacity: this.state.position.x.interpolate({
+                  inputRange: [0, deviceWidth / 4],
+                  outputRange: [0, 1],
+                })
+              }
+            ]}
+          >
+            LIKE
+          </Animated.Text>
+          <Animated.Text 
+            style={[
+              styles.reaction, 
+              styles.nope,
+              {
+                opacity: this.state.position.x.interpolate({
+                  inputRange: [-deviceWidth / 4, 0],
+                  outputRange: [1, 0],
+                })
+              }
+            ]}
+          >
+            NOPE
+          </Animated.Text>
         </View>
         <Text style={styles.title}>{name}, {age}</Text>
       </Animated.Image>
