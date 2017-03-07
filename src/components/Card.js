@@ -9,10 +9,16 @@ class Card extends Component {
   panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderGrant: () => {
-      this.state.position.setOffset({x: this.state.position.x._value, y: this.state.position.y._value});
+      this.state.position.setOffset({
+        x: this.state.position.x._value, 
+        y: this.state.position.y._value,
+      });
       this.state.position.setValue({x: 0, y: 0});
     },
-    onPanResponderMove: Animated.event([null, {dx: this.state.position.x, dy: this.state.position.y}]),
+    onPanResponderMove: Animated.event([null, {
+      dx: this.state.position.x, 
+      dy: this.state.position.y,
+    }]),
     onPanResponderRelease: (event, gestureState) => {
       this.state.position.flattenOffset();
       if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
