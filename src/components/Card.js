@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   reactions: {
     flexDirection: 'row',
     paddingTop: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     justifyContent: 'space-between',
   },
   reaction: {
