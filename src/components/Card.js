@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Image, Text, StyleSheet, PanResponder, Animated, Dimensions} from 'react-native';
 
+const animationDirection = {
+  left: -1,
+  right: 1,
+};
+
 class Card extends Component {
   state = {
     position: new Animated.ValueXY(),
@@ -22,9 +27,9 @@ class Card extends Component {
     onPanResponderRelease: (event, gestureState) => {
       this.state.position.flattenOffset();
       if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
-        const multiplier = gestureState.dx > 0 && gestureState.vx > 0 ? 2 : -2;
+        const direction = gestureState.vx > 0 ? animationDirection.right : animationDirection.left;
         Animated.spring(this.state.position, {toValue: {
-          x: Dimensions.get('window').width * multiplier, 
+          x: Dimensions.get('window').width * direction * 2, 
           y: this.state.position.y,
         }}).start();
       }
