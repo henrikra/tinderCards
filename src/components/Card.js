@@ -43,7 +43,11 @@ class Card extends Component {
         }}).start();
       }
       else {
-        Animated.spring(this.state.position, {toValue: {x: 0, y: 0}}).start();
+        Animated.spring(this.state.position, {
+          toValue: {x: 0, y: 0},
+          friction: 6,
+          tension: 100,
+        }).start();
       }
     },
   })
