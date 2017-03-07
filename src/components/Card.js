@@ -53,12 +53,16 @@ class Card extends Component {
     },
     onPanResponderGrant: ({nativeEvent}) => {
       this.setState({
-        isSwipeFromUpperPart: nativeEvent.locationY > 200,
+        isSwipeFromUpperPart: nativeEvent.locationY > this.cardHeight / 2,
       })
     },
   })
 
   getRotateDirection = () => this.state.isSwipeFromUpperPart ? '-15deg' : '15deg';
+
+  setCardHeight = ({nativeEvent}) => {
+    this.cardHeight = nativeEvent.layout.height;
+  }
 
   render() {
     const {name, age, image} = this.props;
@@ -80,6 +84,7 @@ class Card extends Component {
           },
         ]} 
         {...this.panResponder.panHandlers}
+        onLayout={this.setCardHeight}
       >
         <View style={styles.reactions}>
           <Animated.Text 
