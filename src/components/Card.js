@@ -18,6 +18,7 @@ const animationDirection = {
 class Card extends Component {
   state = {
     position: new Animated.ValueXY(),
+    isSwipeFromUpperPart: false,
   }
 
   panResponder = PanResponder.create({
@@ -50,7 +51,14 @@ class Card extends Component {
         }).start();
       }
     },
+    onPanResponderGrant: ({nativeEvent}) => {
+      this.setState({
+        isSwipeFromUpperPart: nativeEvent.locationY > 200,
+      })
+    },
   })
+
+  getRotateDirection = () => this.state.isSwipeFromUpperPart ? '-15deg' : '15deg';
 
   render() {
     const {name, age, image} = this.props;
@@ -65,7 +73,7 @@ class Card extends Component {
               {
                 rotate: this.state.position.x.interpolate({
                   inputRange: [0, deviceWidth],
-                  outputRange: ['0deg', '-10deg'],
+                  outputRange: ['0deg', this.getRotateDirection()],
                 }),
               },
             ],
@@ -103,7 +111,9 @@ class Card extends Component {
             NOPE
           </Animated.Text>
         </View>
-        <Text style={styles.title}>{name}, {age}</Text>
+        <View pointerEvents="none">
+          <Text style={styles.title}>{name}, {age}</Text>
+        </View>
       </Animated.Image>
     );
   }
