@@ -15,8 +15,8 @@ class Card extends Component {
     onPanResponderMove: Animated.event([null, {dx: this.state.position.x, dy: this.state.position.y}]),
     onPanResponderRelease: (event, gestureState) => {
       this.state.position.flattenOffset();
-      if (Math.abs(gestureState.dx) > Dimensions.get('window').width / 2) {
-        const multiplier = gestureState.dx > 0 ? 2 : -2;
+      if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
+        const multiplier = gestureState.dx > 0 && gestureState.vx > 0 ? 2 : -2;
         Animated.spring(this.state.position, {toValue: {
           x: Dimensions.get('window').width * multiplier, 
           y: this.state.position.y,
