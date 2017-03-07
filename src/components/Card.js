@@ -130,13 +130,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   reaction: {
-    fontSize: 32,
+    fontSize: 42,
     fontWeight: '600',
-    borderWidth: 3,
+    borderWidth: 4,
     textAlign: 'center',
     paddingHorizontal: 10,
     paddingTop: 5,
     borderRadius: 5,
+    backgroundColor: 'transparent',
+    letterSpacing: 2,
   },
   like: {
     color: '#37C978',
