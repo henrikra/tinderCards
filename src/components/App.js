@@ -48,12 +48,7 @@ class tinderCards extends Component {
         <View style={styles.buttons}>
           <View style={styles.button}>
             <TouchableOpacity style={styles.buttonPressable} onPress={this.resetGirls}>
-              <Text>x</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.button}>
-            <TouchableOpacity style={styles.buttonPressable}>
-              <Text>{'<3'}</Text>
+              <Text>Reset hot girls</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -80,8 +75,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   buttonPressable: {
-    width: 50,
-    height: 50,
+    padding: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
