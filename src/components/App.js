@@ -13,11 +13,17 @@ const randomIntegerBetween = (from, to) => Math.floor(Math.random() * to) + from
 const getRandomImage = () => 
   `https://unsplash.it/30${randomIntegerBetween(0, 9)}/35${randomIntegerBetween(0, 9)}`;
 const getLastTwo = arr => arr.slice(Math.max(arr.length - 2, 1));
+const getRandomAge = () => randomIntegerBetween(16, 40);
 
 const hotGirls = [
-  {name: 'Sonja', age: 27, image: getRandomImage()},
-  {name: 'Tarja', age: 34, image: getRandomImage()},
-  {name: 'Enni', age: 50, image: getRandomImage()},
+  {name: 'Sonja', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Tarja', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Enni', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Jenni', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Emma', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Veera', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Sofia', age: getRandomAge(), image: getRandomImage()},
+  {name: 'Laura', age: getRandomAge(), image: getRandomImage()},
 ];
 
 class tinderCards extends Component {
@@ -25,7 +31,7 @@ class tinderCards extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.cards}>
-          {getLastTwo(hotGirls).map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
+          {hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
         </View>
         <View style={styles.buttons}>
           <View style={styles.button}>
