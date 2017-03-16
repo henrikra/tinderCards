@@ -35,19 +35,21 @@ class tinderCards extends Component {
     this.setState({hotGirls});
   }
 
-  deleteGirl = () => {
-    this.setState({hotGirls: this.state.hotGirls.slice(0, this.state.hotGirls.length - 1)});
+  deleteGirl = (index) => {
+    if (index === 0) {
+      this.setState({hotGirls: []});
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.cards}>
-          {this.state.hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} onRelease={this.deleteGirl} />)}
+          {this.state.hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} onRelease={this.deleteGirl} index={index} />)}
         </View>
         <View style={styles.buttons}>
-          <View style={styles.button}>
-            <TouchableOpacity style={styles.buttonPressable} onPress={this.resetGirls}>
+          <View style={[styles.button, this.state.hotGirls.length && styles.buttonDisabled]}>
+            <TouchableOpacity style={styles.buttonPressable} onPress={this.resetGirls} disabled={!!this.state.hotGirls.length}>
               <Text>Reset hot girls</Text>
             </TouchableOpacity>
           </View>
@@ -78,6 +80,9 @@ const styles = StyleSheet.create({
     padding: 25,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonDisabled: {
+    opacity: 0,
   },
   cards: {
     flex: 1,

@@ -44,7 +44,7 @@ class Card extends Component {
         Animated.spring(this.state.position, {toValue: {
           x: deviceWidth * direction * 1.5, 
           y: this.state.position.y._value,
-        }}).start(this.props.onRelease);
+        }}).start(() => this.props.onRelease(this.props.index));
       }
       else {
         Animated.spring(this.state.position, {
