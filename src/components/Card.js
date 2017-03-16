@@ -23,7 +23,10 @@ class Card extends Component {
 
   panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderGrant: () => {
+    onPanResponderGrant: ({nativeEvent}) => {
+      this.setState({
+        isSwipeFromUpperPart: nativeEvent.locationY > this.cardHeight / 2,
+      });
       this.state.position.setOffset({
         x: this.state.position.x._value, 
         y: this.state.position.y._value,
@@ -50,11 +53,6 @@ class Card extends Component {
           tension: 100,
         }).start();
       }
-    },
-    onPanResponderGrant: ({nativeEvent}) => {
-      this.setState({
-        isSwipeFromUpperPart: nativeEvent.locationY > this.cardHeight / 2,
-      })
     },
   })
 
