@@ -27,15 +27,27 @@ const hotGirls = [
 ];
 
 class tinderCards extends Component {
+  state = {
+    hotGirls,
+  }
+
+  resetGirls = () => {
+    this.setState({hotGirls});
+  }
+
+  deleteGirl = () => {
+    this.setState({hotGirls: this.state.hotGirls.slice(0, this.state.hotGirls.length - 1)});
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.cards}>
-          {hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} />)}
+          {this.state.hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} onRelease={this.deleteGirl} />)}
         </View>
         <View style={styles.buttons}>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.buttonPressable}>
+            <TouchableOpacity style={styles.buttonPressable} onPress={this.resetGirls}>
               <Text>x</Text>
             </TouchableOpacity>
           </View>

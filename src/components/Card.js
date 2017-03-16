@@ -43,8 +43,8 @@ class Card extends Component {
         const direction = gestureState.vx > 0 ? animationDirection.right : animationDirection.left;
         Animated.spring(this.state.position, {toValue: {
           x: deviceWidth * direction * 1.5, 
-          y: this.state.position.y,
-        }}).start();
+          y: this.state.position.y._value,
+        }}).start(this.props.onRelease);
       }
       else {
         Animated.spring(this.state.position, {
