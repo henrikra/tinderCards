@@ -41,10 +41,13 @@ class Card extends Component {
       this.state.position.flattenOffset();
       if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
         const direction = gestureState.vx > 0 ? animationDirection.right : animationDirection.left;
-        Animated.spring(this.state.position, {toValue: {
-          x: deviceWidth * direction * 1.5, 
-          y: this.state.position.y._value,
-        }}).start(() => this.props.onRelease(this.props.index));
+        Animated.timing(this.state.position, {
+          toValue: {
+            x: deviceWidth * direction * 1.5, 
+            y: this.state.position.y._value,
+          },
+          duration: 300,
+        }).start(() => this.props.onRelease(this.props.index));
       }
       else {
         Animated.spring(this.state.position, {
