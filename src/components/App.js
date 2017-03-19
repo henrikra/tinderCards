@@ -43,11 +43,17 @@ class tinderCards extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.cards}>
-          {this.state.hotGirls.map((hotGirl, index) => <Card key={index} {...hotGirl} onRelease={this.deleteGirl} index={index} />)}
+          {this.state.hotGirls.map((hotGirl, index) => (
+            <Card key={index} {...hotGirl} onRelease={this.deleteGirl} index={index} />
+          ))}
         </View>
         <View style={styles.buttons}>
           <View style={[styles.button, this.state.hotGirls.length && styles.buttonDisabled]}>
-            <TouchableOpacity style={styles.buttonPressable} onPress={this.resetGirls} disabled={!!this.state.hotGirls.length}>
+            <TouchableOpacity 
+              style={styles.buttonPressable} 
+              onPress={this.resetGirls} 
+              disabled={!!this.state.hotGirls.length}
+            >
               <Text>Reset hot girls</Text>
             </TouchableOpacity>
           </View>
