@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 
@@ -12,7 +11,6 @@ import Card from './Card';
 const randomIntegerBetween = (from, to) => Math.floor(Math.random() * to) + from;
 const getRandomImage = () => 
   `https://unsplash.it/30${randomIntegerBetween(0, 9)}/35${randomIntegerBetween(0, 9)}`;
-const getLastTwo = arr => arr.slice(Math.max(arr.length - 2, 1));
 const getRandomAge = () => randomIntegerBetween(16, 40);
 
 const hotGirls = [
