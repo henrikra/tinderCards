@@ -39,7 +39,7 @@ class Card extends Component {
     }]),
     onPanResponderRelease: (event, gestureState) => {
       this.state.position.flattenOffset();
-      if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.1) {
+      if (Math.abs(gestureState.dx) > 50 && Math.abs(gestureState.vx) > 0.3) {
         const direction = gestureState.vx > 0 ? animationDirection.right : animationDirection.left;
         Animated.timing(this.state.position, {
           toValue: {
